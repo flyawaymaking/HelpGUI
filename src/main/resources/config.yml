@@ -1,0 +1,72 @@
+# Custom Help GUI Configuration
+# После изменений используйте: /helpgui reload
+
+# GUI settings
+gui:
+  title: "<gradient:#00FFAA:#00FFFF>Помощь и информация</gradient>"
+  rows: 6
+
+items:
+  website:
+    slot: 10
+    material: "DIAMOND"
+    name: "<gradient:#00FFFF:#FF00FF>Наш сайт</gradient>"
+    lore:
+      - "&#AAAAAAПосетите наш &#00FFFFофициальный сайт"
+      - "<gradient:#FFAA00:#FFFF00>для получения информации</gradient>"
+      - ""
+      - "&eЛКМ: &fОтправить ссылку в чат"
+      - "&eПКМ: &fОткрыть сайт в браузере"
+    # Общая команда (для обратной совместимости)
+    command: "msg %player% Сайт: example.com"
+    # Команды для разных кликов
+    left-click-command: "msg %player% Сайт: example.com"
+    right-click-command: "msg %player% Чтобы открыть сайт, скопируйте: example.com"
+
+  discord:
+    slot: 16
+    material: "PLAYER_HEAD"
+    name: "<gradient:#AA00FF:#00AAFF>Наш Discord</gradient>"
+    lore:
+      - "&#FFFFFFПрисоединяйтесь к нашему"
+      - "<gradient:#FF5555:#FFAA00>Discord сообществу</gradient>"
+      - ""
+      - "&eЛКМ: &fПолучить ссылку приглашения"
+      - "&eПКМ: &fСкопировать ссылку"
+    left-click-command: "msg %player% Discord: discord.gg/example"
+    right-click-command: "msg %player% Чтобы скопировать: discord.gg/example"
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U1YjVmNmFkMjYyYjJmNGFmYjU4YTJkMjgxY2M0Y2U1YzY3MjlhY2Q0Y2Y2Y2U2ZTVlY2Q3M2Q4Y2YzYyJ9fX0="
+
+  rules:
+    slot: 12
+    material: "BOOK"
+    name: "&6Правила сервера"
+    lore:
+      - "&7Ознакомьтесь с &cправилами&7"
+      - "&7нашего сервера"
+      - ""
+      - "&eЛКМ: &fОткрыть правила"
+      - "&eПКМ: &fПоказать основные правила"
+    left-click-command: "player:rules"  # Выполняется от имени игрока
+    right-click-command: "msg %player% Основные правила: 1. Не гриферить, 2. Уважать игроков"
+
+  warps:
+    slot: 14
+    material: "ENDER_PEARL"
+    name: "&5Телепорты"
+    lore:
+      - "&7Быстрая телепортация"
+      - "&7по ключевым точкам"
+      - ""
+      - "&eЛКМ: &fОткрыть меню телепортов"
+      - "&eПКМ: &fТелепорт на спавн"
+    left-click-command: "player:warps"    # Выполняется от имени игрока
+    right-click-command: "player:spawn"   # Выполняется от имени игрока
+
+  back:
+    slot: 49
+    material: "BARRIER"
+    name: "&cЗакрыть"
+    lore:
+      - "&7Закрыть меню помощи"
+    command: "close"
