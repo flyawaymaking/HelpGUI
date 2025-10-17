@@ -1,0 +1,21 @@
+name: HelpGUI
+version: 1.0.0
+main: com.flyaway.customhelpgui.CustomHelpGUI
+api-version: 1.21
+author: FlyAwayMaking
+website: https://github.com/flyawaymaking
+description: Открывает GUI интерфейс для команды /help
+
+commands:
+  help:
+    description: Открыть GUI
+    usage: /<command>
+  helpgui:
+    description: Управление HelpGUI
+    usage: /<command> reload
+    aliases: [hgui]
+    permission: customhelpgui.admin
+permissions:
+  helpgui.admin:
+    description: Доступ к куправлению HelpGUI плагином
+    default: op
