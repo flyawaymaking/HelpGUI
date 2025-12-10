@@ -8,10 +8,10 @@
 ## ✨ Основные возможности
 
 - 🔹 Полностью настраиваемое меню помощи через `config.yml`
-- 🔹 Поддержка градиентных и HEX-цветов в названии и описаниях предметов
+- 🔹 Поддержка MiniMessages форматов
 - 🔹 Возможность привязывать разные команды к ЛКМ и ПКМ
 - 🔹 Удобное управление через команду `/helpgui reload`
-- 🔹 Поддержка **Paper** (Minecraft 1.21.8)
+- 🔹 Поддержка **Paper** (Minecraft 1.21.10)
 - 🔹 Поддержка **Custom Heads (PLAYER_HEAD)** для уникального дизайна
 
 ![helpGUI.png](assets/screenshots/helpGUI.png)
@@ -41,9 +41,19 @@
 # Custom Help GUI Configuration
 # После изменений используйте: /helpgui reload
 
+messages:
+  no_permission: "<red>У вас нет прав на использование этой команды!"
+  command_help: |
+    <gold>CustomHelpGUI Commands:
+    <yellow>/helpgui reload <gray>- Перезагрузить конфиг
+    <yellow>/helpgui version <gray>- Информация о плагине
+  config_reloaded: "<green>Конфигурация плагина перезагружена!"
+  unknown_subcommand: "<red>Неизвестная подкоманда! Используйте /helpgui"
+
+# GUI settings
 gui:
-title: "<gradient:#00FFAA:#00FFFF>Помощь и информация</gradient>"
-rows: 6
+  title: "<gradient:#00FFAA:#00FFFF>Помощь и информация</gradient>"
+  rows: 6
 
 items:
   website:
@@ -51,11 +61,14 @@ items:
     material: "DIAMOND"
     name: "<gradient:#00FFFF:#FF00FF>Наш сайт</gradient>"
     lore:
-      - "&#AAAAAAПосетите наш &#00FFFFофициальный сайт"
+      - "<#AAAAAA>Посетите наш <#00FFFF>официальный сайт"
       - "<gradient:#FFAA00:#FFFF00>для получения информации</gradient>"
       - ""
-      - "&eЛКМ: &fОтправить ссылку в чат"
-      - "&eПКМ: &fОткрыть сайт в браузере"
+      - "<yellow>ЛКМ: <white>Отправить ссылку в чат"
+      - "<yellow>ПКМ: <white>Открыть сайт в браузере"
+    # Общая команда (для обратной совместимости)
+    command: "msg %player% Сайт: example.com"
+    # Команды для разных кликов
     left-click-command: "msg %player% Сайт: example.com"
     right-click-command: "msg %player% Чтобы открыть сайт, скопируйте: example.com"
 
@@ -64,14 +77,48 @@ items:
     material: "PLAYER_HEAD"
     name: "<gradient:#AA00FF:#00AAFF>Наш Discord</gradient>"
     lore:
-      - "&#FFFFFFПрисоединяйтесь к нашему"
+      - "<#FFFFFF>Присоединяйтесь к нашему"
       - "<gradient:#FF5555:#FFAA00>Discord сообществу</gradient>"
       - ""
-      - "&eЛКМ: &fПолучить ссылку приглашения"
-      - "&eПКМ: &fСкопировать ссылку"
+      - "<yellow>ЛКМ: <white>Получить ссылку приглашения"
+      - "<yellow>ПКМ: <white>Скопировать ссылку"
     left-click-command: "msg %player% Discord: discord.gg/example"
     right-click-command: "msg %player% Чтобы скопировать: discord.gg/example"
-texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U1YjVmNmFkMjYyYjJmNGFmYjU4YTJkMjgxY2M0Y2U1YzY3MjlhY2Q0Y2Y2Y2U2ZTVlY2Q3M2Q4Y2YzYyJ9fX0="
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2U1YjVmNmFkMjYyYjJmNGFmYjU4YTJkMjgxY2M0Y2U1YzY3MjlhY2Q0Y2Y2Y2U2ZTVlY2Q3M2Q4Y2YzYyJ9fX0="
+
+  rules:
+    slot: 12
+    material: "BOOK"
+    name: "<gold>Правила сервера"
+    lore:
+      - "<gray>Ознакомьтесь с <red>правилами"
+      - "<gray>нашего сервера"
+      - ""
+      - "<yellow>ЛКМ: <white>Открыть правила"
+      - "<yellow>ПКМ: <white>Показать основные правила"
+    left-click-command: "player:rules"  # Выполняется от имени игрока
+    right-click-command: "msg %player% Основные правила: 1. Не гриферить, 2. Уважать игроков"
+
+  warps:
+    slot: 14
+    material: "ENDER_PEARL"
+    name: "<dark_purple>Телепорты"
+    lore:
+      - "<gray>Быстрая телепортация"
+      - "<gray>по ключевым точкам"
+      - ""
+      - "<yellow>ЛКМ: <white>Открыть меню телепортов"
+      - "<yellow>ПКМ: <white>Телепорт на спавн"
+    left-click-command: "player:warps"    # Выполняется от имени игрока
+    right-click-command: "player:spawn"   # Выполняется от имени игрока
+
+  back:
+    slot: 49
+    material: "BARRIER"
+    name: "<red>Закрыть"
+    lore:
+      - "<gray>Закрыть меню помощи"
+    command: "close"
 ```
 
 ---

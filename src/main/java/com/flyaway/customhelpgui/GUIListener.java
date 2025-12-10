@@ -26,11 +26,10 @@ public class GUIListener implements Listener {
 
         event.setCancelled(true);
 
-        if (!(event.getWhoClicked() instanceof Player)) {
+        if (!(event.getWhoClicked() instanceof Player player)) {
             return;
         }
 
-        Player player = (Player) event.getWhoClicked();
         ItemStack clickedItem = event.getCurrentItem();
 
         if (clickedItem == null || !clickedItem.hasItemMeta()) {
